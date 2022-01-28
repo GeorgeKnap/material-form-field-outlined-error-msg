@@ -1,13 +1,10 @@
-<div class="example-container">
+<div class="example-container" [formGroup]="form">
   <mat-form-field appearance="outline">
-    <mat-label>Enter your email</mat-label>
-    <input
-      matInput
-      placeholder="pat@example.com"
-      [formControl]="email"
-      required
-    />
-    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    <mat-label>Enter your text</mat-label>
+    <input matInput placeholder="some text" formControlName="name" />
+    <mat-error *ngIf="form.controls.name.errors?.required"
+      >it is invalid</mat-error
+    >
   </mat-form-field>
 </div>
 

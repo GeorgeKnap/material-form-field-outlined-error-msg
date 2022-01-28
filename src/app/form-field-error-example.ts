@@ -1,5 +1,10 @@
-import {Component} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import { Component } from '@angular/core';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@ng-stack/forms';
 
 /** @title Form field with error messages */
 @Component({
@@ -8,17 +13,15 @@ import {FormControl, Validators} from '@angular/forms';
   styleUrls: ['form-field-error-example.css'],
 })
 export class FormFieldErrorExample {
-  email = new FormControl('', [Validators.required, Validators.email]);
+  form: FormGroup<{ name: string }>;
+  fb = new FormBuilder();
 
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'You must enter a value';
-    }
-
-    return this.email.hasError('email') ? 'Not a valid email' : '';
+  constructor() {
+    this.form = this.fb.group<{ name: string }>({
+      name: ['', Validators.required],
+    });
   }
 }
-
 
 /**  Copyright 2022 Google LLC. All Rights Reserved.
     Use of this source code is governed by an MIT-style license that
