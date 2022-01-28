@@ -20,6 +20,9 @@ export class FormFieldErrorExample {
     this.form = this.fb.group<{ name: string }>({
       name: ['', Validators.required],
     });
+
+    // add this to display the error state immediately
+    // this.form.markAllAsTouched();
   }
 }
 
